@@ -1,5 +1,5 @@
 import { Button } from "@radix-ui/themes";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AccountOkx from "./AccountOkx";
 declare global {
   interface Window {
@@ -12,9 +12,6 @@ export default function WalletOkx() {
     const { address } = await window.okxwallet.bitcoin.connect();
     setAddress(address);
   };
-  useEffect(() => {
-    window.okxwallet.solana.on("connect", () => console.log("connected!"));
-  }, []);
 
   return address ? (
     <AccountOkx />
